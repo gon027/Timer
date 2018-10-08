@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,12 +23,12 @@ public class Setting extends JDialog implements ActionListener{
 	private JButton SetButton;			//セットボタン
 	private JButton CancelButton;		//キャンセルボタン
 	private JTextField hourTime;		//時間を決めるテキスト
-	private JTextField minuteTime;		//分を決めるボタン
+	private JTextField secondTime;		//分を決めるボタン
 	private JPanel panel;
 	private JLabel Timelab;
-	private JLabel Minutelab;
+	private JLabel Secondlab;
 	private int time;		
-	private int minute;
+	private int second;
 	
 	public Setting() {
 		width = 400;
@@ -36,15 +37,16 @@ public class Setting extends JDialog implements ActionListener{
 		this.setLocationRelativeTo(null);
 		this.setTitle("Setting");
 		this.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);	
+		
 		cnt = this.getContentPane();
 		cnt.setLayout(new BorderLayout());
 	
-		Timelab = new JLabel(" hour:");
-		Minutelab = new JLabel(" minite:");
+		Timelab = new JLabel(" time:");
+		Secondlab = new JLabel(" second:");
 		hourTime = new JTextField();
-		minuteTime = new JTextField();
+		secondTime = new JTextField();
 		SetButton = new JButton("Set");
 		SetButton.setPreferredSize(new Dimension(100,50));
 		CancelButton = new JButton("Cancel");
@@ -54,8 +56,8 @@ public class Setting extends JDialog implements ActionListener{
 		panel.setLayout(new GridLayout(4, 2));
 		panel.add(Timelab);
 		panel.add(hourTime);
-		panel.add(Minutelab);
-		panel.add(minuteTime);
+		panel.add(Secondlab);
+		panel.add(secondTime);
 		panel.add(SetButton);
 		panel.add(CancelButton);
 		
@@ -81,7 +83,7 @@ public class Setting extends JDialog implements ActionListener{
 				//時間の設定
 				time = Integer.parseInt(hourTime.getText());
 				//分の設定
-				minute = Integer.parseInt(minuteTime.getText());
+				second = Integer.parseInt(secondTime.getText());
 				
 				if(time < 0 || time > 120) {
 					showErrorMag("0 - 120までの数値を入力");
@@ -89,7 +91,7 @@ public class Setting extends JDialog implements ActionListener{
 					return;
 				}
 				
-				if(time < 0 || minute > 59) {
+				if(time < 0 || second > 59) {
 					showErrorMag("00 - 59までの数値を入力");
 					return;
 				}
@@ -110,6 +112,6 @@ public class Setting extends JDialog implements ActionListener{
 	}
 	
 	public int getMinute() {
-		return minute;
+		return second;
 	}
 }

@@ -22,7 +22,7 @@ public class MainPanel implements ActionListener{
 //	private JPanel DownPanel;
 	private JLabel lab;
 	private int hour;
-	private int minute;
+	private int second;
 	private boolean timecount = true;
 	
 		
@@ -61,7 +61,7 @@ public class MainPanel implements ActionListener{
 		
 		//タイマーを表示させる
 		hour = t;
-		minute = m;
+		second = m;
 		String s = t < 10  ? ("0" + t + ":" + "0" + m) : (t + ":" + m);
 		lab = new JLabel(s, SwingConstants.CENTER);
 		lab.setFont(new Font("Arial", Font.PLAIN, 120));
@@ -114,17 +114,17 @@ public class MainPanel implements ActionListener{
 				e.printStackTrace();
 			}
 			
-			if(minute == 0) {
-				minute = 59;
+			if(second == 0) {
+				second = 59;
 				hour--;
 			} else {
-				minute--;
+				second--;
 			}
 			 String h = hour < 10 ? ("0" + hour) : Integer.toString(hour);
-			 String m = minute < 10 ? ("0" + minute) : Integer.toString(minute);
+			 String m = second < 10 ? ("0" + second) : Integer.toString(second);
 			 lab.setText(h + ":" + m);
 			 
-			 if(hour == 0 && minute == 0) {
+			 if(hour == 0 && second == 0) {
 				 showMsg();
 				 break;
 			 }
@@ -134,6 +134,9 @@ public class MainPanel implements ActionListener{
 	public static void main(String[] args) {
 		Setting form = new Setting();
 		form.setVisible(true);
-		if(form.getTime() != -1) new MainPanel(form.getTime(), form.getMinute());
+		
+		if(form.getTime() != -1) {
+			new MainPanel(form.getTime(), form.getMinute());
+		}
 	}
 }
