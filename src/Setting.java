@@ -13,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 public class Setting extends JDialog implements ActionListener{
+	
 	private int width, height;
 	private Container cnt;
 	private JButton SetButton;			//セットボタン
@@ -34,7 +36,7 @@ public class Setting extends JDialog implements ActionListener{
 		this.setLocationRelativeTo(null);
 		this.setTitle("Setting");
 		this.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setResizable(false);	
 		cnt = this.getContentPane();
 		cnt.setLayout(new BorderLayout());
@@ -76,7 +78,6 @@ public class Setting extends JDialog implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == SetButton) {
 			try {
-				
 				//時間の設定
 				time = Integer.parseInt(hourTime.getText());
 				//分の設定
