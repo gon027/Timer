@@ -59,7 +59,7 @@ public class MainPanel implements ActionListener{
 //		mainpanel.add(UpPanel);
 //		mainpanel.add(DownPanel);
 		
-		//タイマーを表示させる
+		//タイマーを設定
 		hour = t;
 		second = m;
 		String s = t < 10  ? ("0" + t + ":" + "0" + m) : (t + ":" + m);
