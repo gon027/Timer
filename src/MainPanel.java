@@ -119,6 +119,7 @@ public class MainPanel implements ActionListener{
 			} else {
 				second--;
 			}
+			
 			 String h = hour < 10 ? ("0" + hour) : Integer.toString(hour);
 			 String m = second < 10 ? ("0" + second) : Integer.toString(second);
 			 lab.setText(h + ":" + m);
