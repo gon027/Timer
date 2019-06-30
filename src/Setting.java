@@ -2,14 +2,12 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,8 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class Setting extends JDialog implements ActionListener{
-	
-	private int width, height;
+	private final int width = 400;
+	private final int height = 150;
 	private Container cnt;
 	private JButton SetButton;			//セットボタン
 	private JButton CancelButton;		//キャンセルボタン
@@ -31,8 +29,6 @@ public class Setting extends JDialog implements ActionListener{
 	private int second;
 	
 	public Setting() {
-		width = 400;
-		height = 150;
 		this.setSize(width, height);
 		this.setLocationRelativeTo(null);
 		this.setTitle("Setting");
@@ -71,8 +67,7 @@ public class Setting extends JDialog implements ActionListener{
 	
 	//エラーメッセージを出すための関数
 	public void showErrorMag(String msg) {
-		JOptionPane.showMessageDialog(null, msg,
-				"Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, msg, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	//ボタンが押された時の処理
@@ -86,18 +81,18 @@ public class Setting extends JDialog implements ActionListener{
 				second = Integer.parseInt(secondTime.getText());
 				
 				if(time < 0 || time > 120) {
-					showErrorMag("0 - 120までの数値を入力");
+					showErrorMag("0 - 120までの数値を入力してください");
 					time = -1;
 					return;
 				}
 				
-				if(time < 0 || second > 59) {
-					showErrorMag("00 - 59までの数値を入力");
+				if(second < 0 || second > 59) {
+					showErrorMag("secondは\n00 - 59までの数値を入力してください");
 					return;
 				}
 				
 			}catch(Exception ex){
-				showErrorMag("数値を入力");
+				showErrorMag("数値を入力してください");
 				return;
 			}
 			dispose();

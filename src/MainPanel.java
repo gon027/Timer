@@ -1,34 +1,30 @@
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 public class MainPanel implements ActionListener{
+	private final int width = 400;
+	private final int height = 200;
 	
 	//メインパネル
 	private JFrame mainpanel;
 	private JButton StartButton;		//スタートボタン
 	private JButton StopButton;			//ストップボタン
 	private JButton ResetButton;		//リセットボタン
-	private JPanel UpPanel;
-	private JPanel DownPanel;
 	private JLabel lab;
 	private int hour;
 	private int second;
+	
 	private boolean timecount = true;
 	
 	MainPanel(int t, int m){
-		int width = 400;
-		int height = 200;
-		
 		//各ボタンの設定
 		StartButton = new JButton("スタート");
 		StartButton.setPreferredSize(new Dimension(100,50));
@@ -37,27 +33,13 @@ public class MainPanel implements ActionListener{
 		ResetButton = new JButton("リセット");
 		ResetButton.setPreferredSize(new Dimension(100, 50));
 		
-		//パネルの設定
-//		UpPanel = new JPanel();
-		//UpPanel.setBackground(Color.red);
-		
-//		DownPanel = new JPanel();
-		//DownPanel.setBackground(Color.yellow);
-		
 		//mainpanelの設定
 		mainpanel = new JFrame("タイマー");
 		mainpanel.setSize(width, height);
 		mainpanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainpanel.setLocationRelativeTo(null);
 		mainpanel.setResizable(false);
-		
-		//panelが上下に来るように設定
-//		mainpanel.setLayout(new FlowLayout());
-		
-		//mainpanelにpanelを追加
-//		mainpanel.add(UpPanel);
-//		mainpanel.add(DownPanel);
-		
+
 		//タイマーを設定
 		hour = t;
 		second = m;
@@ -65,17 +47,6 @@ public class MainPanel implements ActionListener{
 		lab = new JLabel(s, SwingConstants.CENTER);
 		lab.setFont(new Font("Arial", Font.PLAIN, 120));
 		mainpanel.getContentPane().add(lab);
-		//これでも動く
-//		UpPanel.add(lab);
-		
-//		DownPanel.add(StartButton);
-//		DownPanel.add(StopButton);
-//		DownPanel.add(ResetButton);
-//		
-//		StartButton.addActionListener(this);
-//		StopButton.addActionListener(this);
-//		ResetButton.addActionListener(this);
-		
 		mainpanel.setVisible(true);
 		
 		startTimer();
@@ -101,8 +72,7 @@ public class MainPanel implements ActionListener{
 	}
 	
 	public void showMsg() {
-		JOptionPane.showMessageDialog(null, "Time up!", "終了",
-				JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Time up!", "終了", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void startTimer() {
